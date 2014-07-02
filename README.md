@@ -9,3 +9,5 @@ Scripts
 -------
 
 `xcopy` is a bash oneliner using xsel to copy the primary selection into the clipboard buffer, so that we can still paste things from terminal apps that only support the selection "buffer". I have this bound to the Meta4+C key combo in the window manager.
+
+`xpaste` is a horrible python script that feeds the contents of the clipboard buffer into xdotool and thereby emulates typing the whole lot in. Use with caution, as it probably creates a large security hole. Useful for programs that don't support the clipboard at all, or deliberately disable it. There might be a more sensible way to do this.

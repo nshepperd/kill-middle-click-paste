@@ -1,0 +1,13 @@
+#!/usr/bin/python2
+import sys, os, time
+from subprocess import Popen, PIPE
+
+dproc = Popen(['/usr/bin/xsel', '-ob'], stdout=PIPE)
+data = dproc.stdout.read()
+
+# Arbitrary sleep parameter because this seems to not work for
+# some reason if you're still in the middle of pressing the hotkey
+time.sleep(0.3)
+
+pproc = Popen(['/usr/bin/xdotool', 'type', '--delay', '0', '--clearmodifiers', '--', data])
+pproc.wait()
