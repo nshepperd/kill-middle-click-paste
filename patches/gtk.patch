@@ -1,0 +1,28 @@
+diff -ur gtk+2.0-2.20.1/gtk/gtkselection.c gtk+2.0-2.20.1-patched/gtk/gtkselection.c
+--- gtk+2.0-2.20.1/gtk/gtkselection.c	2010-05-01 22:14:29.000000000 -0500
++++ gtk+2.0-2.20.1-patched/gtk/gtkselection.c	2011-09-17 10:45:37.000000000 -0500
+@@ -1065,6 +1065,24 @@
+   display = gtk_widget_get_display (widget);
+   owner_window = gdk_selection_owner_get_for_display (display, selection);
+   
++  if (selection == gdk_atom_intern("PRIMARY", TRUE)) {
++      GtkSelectionData selection_data;
++
++      selection_data.selection = selection;
++      selection_data.target = target;
++      selection_data.type = gdk_atom_intern("STRING", TRUE);
++      selection_data.format = 8;
++      selection_data.data = (unsigned char *)"";
++      selection_data.length = 0;
++      selection_data.display = display;
++
++      gtk_selection_retrieval_report(info, selection_data.type,
++              selection_data.format, selection_data.data,
++              selection_data.length, time_);
++
++      return TRUE;
++  }
++ 
+   if (owner_window != NULL)
+     {
+       GtkWidget *owner_widget;

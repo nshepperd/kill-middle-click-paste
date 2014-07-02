@@ -1,0 +1,19 @@
+diff -ur rxvt-unicode-9.20/src/command.C rxvt-unicode-9.20-new/src/command.C
+--- rxvt-unicode-9.20/src/command.C	2014-04-27 00:10:12.000000000 +1000
++++ rxvt-unicode-9.20-new/src/command.C	2014-07-03 02:06:48.570850449 +1000
+@@ -2214,10 +2214,11 @@
+             selection_make (ev.time);
+             break;
+
+-          case Button2:
+-            if (IN_RANGE_EXC (ev.x, 0, vt_width) && IN_RANGE_EXC (ev.y, 0, vt_height)) // inside window?
+-              selection_request (ev.time, ev.state & ModMetaMask ? Sel_Clipboard : Sel_Primary);
+-            break;
++	    // Gonna kill this stupid shit
++          // case Button2:
++          //   if (IN_RANGE_EXC (ev.x, 0, vt_width) && IN_RANGE_EXC (ev.y, 0, vt_height)) // inside window?
++          //     selection_request (ev.time, ev.state & ModMetaMask ? Sel_Clipboard : Sel_Primary);
++          //   break;
+
+ #ifdef MOUSE_WHEEL
+           case Button4:
